@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="bottom"
+    android:padding="10px"
+    android:background="#000000"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:padding="10px"
+        >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↺" />
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="←"
+            android:onClick="left"/>
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="10px"
+            >
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Niveau : "
+                android:textAlignment="gravity"
+                android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="gravity"
+            android:text="Lines : "
+            android:textColor="#ffffff"/>
+
+            </LinearLayout>
+
+        <GridView
+        android:id="@+id/gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:padding="10px"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:scrollbars="none"
+        android:horizontalSpacing="0dp"
+            android:background="#ffffff"
+        />
+
+        </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="↻" />
+
+        <Button
+            android:id="@+id/right"
+            style="@style/Widget.AppCompat.Button.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="→"
+            android:onClick="right"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>
