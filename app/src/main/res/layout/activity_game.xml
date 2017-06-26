@@ -96,6 +96,7 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="rotate"
             android:text="↻" />
 
         <Button

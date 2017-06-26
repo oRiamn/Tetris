@@ -1,19 +1,19 @@
 package com.example.oriamn.tetris.piece;
 
 /**
- * Created by oriamn on 10/06/17.
+ * Created by oriamn on 26/06/17.
  */
 
-public class ZPiece extends Piece {
+public class SPiece extends Piece {
 
     private static int[][] FORME = {
             {0, 0, 0, 0},
-            {0, 0, 1, 1},
             {0, 1, 1, 0},
+            {0, 0, 1, 1},
             {0, 0, 0, 0}
     };
 
-    public ZPiece() {
-        super(ZPiece.FORME);
+    public SPiece() {
+        super(SPiece.FORME);
     }
 }

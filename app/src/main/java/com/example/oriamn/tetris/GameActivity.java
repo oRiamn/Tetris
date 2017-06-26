@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity {
 
     private GameCore gameCore;
 
-    private ArrayList<Integer> blocks;
+
 
     private MyAdapter gridAdapter;
 
@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public GameActivity() {
-        this.blocks = new ArrayList();
+
     }
 
     private  static int mod (int a, int b) {
@@ -60,6 +60,8 @@ public class GameActivity extends AppCompatActivity {
         GridView gridview = (GridView) findViewById(R.id.gridview);
 
 
+        gridAdapter = new MyAdapter(this);
+
         int numColumns = 10;
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -75,33 +77,31 @@ public class GameActivity extends AppCompatActivity {
         int numBlocks = numRows*numColumns;
 
         for(int i = 0; i < numBlocks; i++) {
-            this.blocks.add(Color.BLACK);
+            this.gridAdapter.blocks.add(Color.BLACK);
         }
 
         ViewGroup.LayoutParams layoutParams = gridview.getLayoutParams();
-
         layoutParams.width = width;
         layoutParams.height = height;
-
-        gridAdapter = new MyAdapter(this);
         gridview.setAdapter(gridAdapter);
         gridview.setNumColumns(numColumns);
 
-        gameCore = new GameCore(numBlocks);
+        this.gameCore = new GameCore(gridAdapter, numBlocks);
     }
 
     public void right(View view) {
         // Kabloe
-
-        this.blocks.set(10, Color.GREEN);
-        gridAdapter.notifyDataSetChanged();
+        this.gameCore.right();
     }
 
     public void left(View view) {
-        // Kabloe
+        this.gameCore.left();
+    }
 
-        this.blocks.set(15, Color.RED);
-        gridAdapter.notifyDataSetChanged();
+    public void rotate(View view) {
+        this.gameCore.rotate();
+
+
     }
 
     public void onConfigurationChanged(Configuration newConfig) {
@@ -111,10 +111,13 @@ public class GameActivity extends AppCompatActivity {
 
     public class MyAdapter extends BaseAdapter {
 
+        public ArrayList<Integer> blocks;
+
         private Context mContext;
 
         public MyAdapter(Context c) {
             mContext = c;
+            this.blocks = new ArrayList();
         }
 
         @Override

@@ -7,16 +7,14 @@ package com.example.oriamn.tetris.piece;
 public class CubePiece extends Piece {
 
     private static int[][] FORME =  {
-                                {1,1,1},
-                                {1,1,1},
-                                {1,1,1}
-                            };
+            {0,0,0,0},
+            {0,1,1,0},
+            {0,1,1,0},
+            {0,0,0,0}
+    };
 
     public CubePiece() {
-        super();
+        super(CubePiece.FORME);
     }
 
-    int[][] getForme() {
-        return CubePiece.FORME;
-    }
 }

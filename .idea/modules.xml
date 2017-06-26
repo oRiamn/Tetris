@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tetris.iml" filepath="$PROJECT_DIR$/Tetris.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file:///mnt/CE04CAA304CA8DC1/Developpement/Tetris/Tetris.iml" filepath="/mnt/CE04CAA304CA8DC1/Developpement/Tetris/Tetris.iml" />
+      <module fileurl="file:///mnt/CE04CAA304CA8DC1/Developpement/Tetris/app/app.iml" filepath="/mnt/CE04CAA304CA8DC1/Developpement/Tetris/app/app.iml" />
     </modules>
   </component>
 </project>
