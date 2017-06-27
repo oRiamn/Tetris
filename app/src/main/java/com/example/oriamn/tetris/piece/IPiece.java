@@ -4,7 +4,7 @@ package com.example.oriamn.tetris.piece;
  * Created by oriamn on 26/06/17.
  */
 
-public class IPiece extends Piece {
+public class IPiece extends DeuxPosPiece {
 
     private static int[][] FORME = {
             {0, 0, 0, 0},

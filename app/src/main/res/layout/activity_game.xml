@@ -26,6 +26,7 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="rotateG"
             android:text="↺" />
 
         <Button
@@ -96,7 +97,7 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="rotate"
+            android:onClick="rotateD"
             android:text="↻" />
 
         <Button

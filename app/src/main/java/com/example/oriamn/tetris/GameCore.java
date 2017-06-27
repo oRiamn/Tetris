@@ -33,11 +33,40 @@ public class GameCore {
     };
 
 
-
-
     public void createPiece() {
 
-        this.piece = new IPiece();
+        int maximum = 7;
+        int minimum = 1;
+
+        Random rn = new Random();
+        int n = maximum - minimum + 1;
+        int i = rn.nextInt() % n;
+        int randomNum = minimum + i;
+
+        switch (randomNum) {
+            case 1 :
+                this.piece = new CubePiece();
+                break;
+            case 2 :
+                this.piece = new IPiece();
+                break;
+            case 3 :
+                this.piece = new SPiece();
+                break;
+            case 4 :
+                this.piece = new ZPiece();
+                break;
+            case 5 :
+                this.piece = new JPiece();
+                break;
+            case 6 :
+                this.piece = new LPiece();
+                break;
+            case 7 :
+                this.piece = new TPiece();
+                break;
+        }
+
         place();
     }
 
@@ -67,7 +96,7 @@ public class GameCore {
 
     public void right() {
         int rX = this.piece.getX();
-        if(rX+piece.getWidth() < 10) {
+        if(rX+piece.getWidth() < 9) {
             clear();
             this.piece.setX(rX+1);
 
@@ -79,17 +108,14 @@ public class GameCore {
 
     }
 
-    public void rotate() {
+    public void rotate(boolean sens) {
         clear();
-        this.piece.roate(false);
-
+        this.piece.roate(sens);
         if(!isPlacable()) {
-            this.piece.roate(true);
+            this.piece.roate(!sens);
         }
-
         place();
     }
-
 
     public void left() {
         int rX = this.piece.getX();
@@ -104,7 +130,6 @@ public class GameCore {
             place();
         }
     }
-
 
     public void down() {
         clear();
@@ -144,7 +169,6 @@ public class GameCore {
         }
         createPiece();
     }
-
 
 
     public void onPause() {

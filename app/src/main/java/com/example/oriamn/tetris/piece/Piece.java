@@ -15,8 +15,7 @@ public abstract class Piece {
 
     private int[][] forme;
 
-    private int width;
-    private int height;
+    private int width,height;
 
     private ArrayList<Integer> coordonnees;
 
@@ -48,8 +47,7 @@ public abstract class Piece {
         this.color = Color.parseColor(color);
     }
 
-
-    public Piece(int[][] forme) {
+    protected Piece(int[][] forme) {
         this.forme = forme;
 
         randColor();
@@ -84,7 +82,6 @@ public abstract class Piece {
         this.computeCoordonnees();
     }
 
-
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
@@ -95,11 +92,10 @@ public abstract class Piece {
     private void computeCoordonnees() {
         this.coordonnees = new ArrayList<Integer>();
         int x, y;
-        this.height = 0;
+        this.height=0;
         this.width=0;
         for (int i = 0; i < this.forme.length; i++) {
-            this.width = this.forme[i].length;
-            for (int j = 0; j < this.width; j++) {
+            for (int j = 0; j < this.forme[i].length; j++) {
                 if (this.forme[i][j] == 1) {
 
                     this.height = (i > this.height) ? i : this.height;
@@ -122,7 +118,6 @@ public abstract class Piece {
     }
 
     public void roate(boolean left) {
-
         if(left) {
             transpose(this.forme);
             swapRows(this.forme);
@@ -130,7 +125,6 @@ public abstract class Piece {
             swapRows(this.forme);
             transpose(this.forme);
         }
-
         computeCoordonnees();
     }
 
@@ -152,16 +146,4 @@ public abstract class Piece {
             m[k] = x;
         }
     }
-
-    private static void rotateByNinetyToLeft(int[][] m) {
-
-    }
-
-    private static void rotateByNinetyToRight(int[][] m) {
-        swapRows(m);
-        transpose(m);
-    }
-
-
-
 }

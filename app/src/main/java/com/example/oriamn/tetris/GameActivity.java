@@ -98,10 +98,12 @@ public class GameActivity extends AppCompatActivity {
         this.gameCore.left();
     }
 
-    public void rotate(View view) {
-        this.gameCore.rotate();
+    public void rotateG(View view) {
+        this.gameCore.rotate(true);
+    }
 
-
+    public void rotateD(View view) {
+        this.gameCore.rotate(false);
     }
 
     public void onConfigurationChanged(Configuration newConfig) {
