@@ -1,5 +1,6 @@
 package com.example.oriamn.tetris;
 
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
@@ -20,18 +21,24 @@ public class GameCore {
 
     private GameActivity.MyAdapter gridAdapter;
 
+    private AlertDialog eofGame;
+
     private ArrayList<Integer> blocks;
 
+    private boolean shouldIDoIt = true;
     private Handler myHandler;
     private Runnable horloge = new Runnable() {
         @Override
         public void run() {
             // Code à éxécuter de façon périodique
             down();
-            myHandler.postDelayed(this,500);
+            if(shouldIDoIt){
+                myHandler.postDelayed(this,500);
+            } else {
+                myHandler.removeCallbacks(this);
+            }
         }
     };
-
 
     public void createPiece() {
 
@@ -62,14 +69,19 @@ public class GameCore {
             case 6 :
                 this.piece = new LPiece();
                 break;
-            case 7 :
+            default:
                 this.piece = new TPiece();
-                break;
         }
 
-        place();
-    }
+        this.piece.setPosition(2,0);
 
+        if(isPlacable()) {
+            place();
+        } else {
+            shouldIDoIt = false;
+            this.eofGame.show();
+        }
+    }
 
     public void place() {
         ArrayList<Integer> coordonnes = this.piece.getCoordonnees();
@@ -156,7 +168,9 @@ public class GameCore {
         gridAdapter.notifyDataSetChanged();
     }
 
-    public GameCore(GameActivity.MyAdapter gridAdapter, int numBlocks) {
+    public GameCore(GameActivity.MyAdapter gridAdapter, int numBlocks, AlertDialog eofGame) {
+
+        this.eofGame = eofGame;
 
         myHandler = new Handler();
         myHandler.postDelayed(horloge,500); // on redemande toute les 500ms
@@ -169,7 +183,6 @@ public class GameCore {
         }
         createPiece();
     }
-
 
     public void onPause() {
         if(myHandler != null)

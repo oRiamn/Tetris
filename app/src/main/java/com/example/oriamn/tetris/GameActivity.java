@@ -1,6 +1,10 @@
 package com.example.oriamn.tetris;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -27,8 +31,6 @@ public class GameActivity extends AppCompatActivity {
 
     private GameCore gameCore;
 
-
-
     private MyAdapter gridAdapter;
 
     public void onPause() {
@@ -44,7 +46,17 @@ public class GameActivity extends AppCompatActivity {
         return (a - res) / b;
     }
 
+    public static void restartActivity(Activity act){
+
+        Intent intent=new Intent();
+        intent.setClass(act, act.getClass());
+        act.startActivity(intent);
+        act.finish();
+
+    }
+
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         // remove title
@@ -86,7 +98,20 @@ public class GameActivity extends AppCompatActivity {
         gridview.setAdapter(gridAdapter);
         gridview.setNumColumns(numColumns);
 
-        this.gameCore = new GameCore(gridAdapter, numBlocks);
+        final GameActivity act = this;
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Fin du jeu?");
+        alertDialog.setMessage("Vous avez perdu!! Voulez vous rejouer?");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OUI! C'est trop un bon jeu!!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        act.restartActivity(act);
+                    }
+                });
+
+        this.gameCore = new GameCore(gridAdapter, numBlocks, alertDialog);
     }
 
     public void right(View view) {
