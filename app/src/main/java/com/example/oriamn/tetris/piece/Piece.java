@@ -1,6 +1,7 @@
 package com.example.oriamn.tetris.piece;
 
 import android.graphics.Color;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -100,7 +101,7 @@ public abstract class Piece {
 
                     this.height = (i > this.height) ? i : this.height;
                     this.width = (j > this.width) ? j : this.width;
-                    
+
                     x = j + this.getX();
                     y = (i + this.getY()) * 10;
                     this.coordonnees.add(x + y);

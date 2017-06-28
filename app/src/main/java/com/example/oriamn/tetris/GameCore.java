@@ -73,9 +73,14 @@ public class GameCore {
                 this.piece = new TPiece();
         }
 
+        //this.piece =  new DebugPiece();
+
         this.piece.setPosition(2,0);
 
+        //this.piece.setPosition(0,0);
+
         if(isPlacable()) {
+            removeLignesPleines();
             place();
         } else {
             shouldIDoIt = false;
@@ -155,6 +160,42 @@ public class GameCore {
         } else {
             place();
         }
+    }
+
+    public void removeLignesPleines(){
+        ArrayList<Integer> lignesPleines = this.getLignesPleine();
+        if(lignesPleines.size() >0) {
+            int derniereCase = 0;
+            while (lignesPleines.size() > 0) {
+                derniereCase = lignesPleines.get(0);
+                for (int i = derniereCase; i >= 10; i--) {
+                    this.blocks.set(i, this.blocks.get(i-10));
+                    gridAdapter.blocks.set(i, gridAdapter.blocks.get(i-10));
+                }
+                lignesPleines.remove(0);
+            }
+
+            gridAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private ArrayList<Integer> getLignesPleine(){
+        boolean isPleine=false;
+        ArrayList<Integer> lignesPleines= new ArrayList<Integer>();
+
+        for (int i = 9; i < blocks.size(); i+=10) {
+            isPleine=true;
+            for(int j = 0; j < 10; j++) {
+                if(blocks.get(i-j) == 0){
+                    isPleine=false;
+                }
+            }
+            if(isPleine){
+                lignesPleines.add(i);
+            }
+        }
+
+        return lignesPleines;
     }
 
     public void clear() {
