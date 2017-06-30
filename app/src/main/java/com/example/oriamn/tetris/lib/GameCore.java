@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import com.example.oriamn.tetris.GameActivity;
 import com.example.oriamn.tetris.lib.componnent.Grid;
 import com.example.oriamn.tetris.lib.componnent.ControlBox;
+import com.example.oriamn.tetris.lib.componnent.Panel;
 import com.example.oriamn.tetris.utils.Rand;
 import com.example.oriamn.tetris.lib.componnent.Timer;
 
@@ -15,6 +16,8 @@ import java.util.ArrayList;
  */
 
 public class GameCore {
+
+    private Panel panel;
 
     private Timer timer;
 
@@ -56,11 +59,14 @@ public class GameCore {
     public void removeLignesPleines(){
         ArrayList<Integer> lignesPleines = this.getLignesPleine();
         if(lignesPleines.size() >0) {
+
+            this.panel.incrementLigne(lignesPleines.size());
+
             int derniereCase = 0;
             while (lignesPleines.size() > 0) {
                 derniereCase = lignesPleines.get(0);
 
-                // du bas de la grille jusq'en haut
+                // du bas de la grille jusqu'en haut
                 for (int i = derniereCase; i >= 10; i--) {
                     // on décale chaque block d'une ligne
                     this.grid.moveBlock(i-10, i);
@@ -114,7 +120,7 @@ public class GameCore {
 
         this.controls = new ControlBox(this,this.piece, this.blocks);
         this.grid = new Grid(this, this.piece, this.blocks, gridAdapter);
-
+        this.panel = new Panel(this);
         this.timer = new Timer(this, 500, new Runnable() {
             @Override
             public void run() {
@@ -126,6 +132,8 @@ public class GameCore {
     public ControlBox getControls() {
         return controls;
     }
+
+    public Panel getPanel() { return panel; }
 
     public void onPause() {
        this.timer.setShouldIDoIt(false);

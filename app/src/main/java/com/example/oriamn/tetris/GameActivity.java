@@ -19,8 +19,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.example.oriamn.tetris.lib.GameCore;
+import com.example.oriamn.tetris.lib.componnent.Panel;
 import com.example.oriamn.tetris.utils.BlockView;
 
 import java.util.ArrayList;
@@ -109,7 +111,22 @@ public class GameActivity extends AppCompatActivity {
                 });
 
         this.gameCore = new GameCore(gridAdapter, numBlocks, alertDialog);
+
+
+        TextView t = new TextView(this);
+        t=(TextView)findViewById(R.id.scoring);
+        final TextView finalT = t;
+        this.gameCore.getPanel().setRefresh(new Runnable() {
+            @Override
+            public void run() {
+
+                Panel p =  gameCore.getPanel();
+                finalT.setText("Score : " + p.getScore() + "\n" + "Lignes :" +  p.getNbLigne());
+            }
+        });
     }
+
+
 
     public void right(View view) {
         // Kabloe
