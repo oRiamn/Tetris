@@ -113,6 +113,7 @@ public class GameActivity extends AppCompatActivity {
         this.gameCore = new GameCore(gridAdapter, numBlocks, alertDialog);
 
 
+        // Pour bien séparer le logique de la vue
         TextView t = new TextView(this);
         t=(TextView)findViewById(R.id.scoring);
         final TextView finalT = t;
@@ -121,7 +122,7 @@ public class GameActivity extends AppCompatActivity {
             public void run() {
 
                 Panel p =  gameCore.getPanel();
-                finalT.setText("Score : " + p.getScore() + "\n" + "Lignes :" +  p.getNbLigne());
+                finalT.setText("Score : " + p.getScore() + "\n" + "Lignes : " +  p.getNbLigne());
             }
         });
     }

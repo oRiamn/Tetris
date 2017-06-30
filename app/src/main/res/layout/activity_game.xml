@@ -58,7 +58,7 @@
                 android:id="@+id/scoring"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Score : \nLignes :"
+                android:text="Score : 0\nLignes : 0"
                 android:textAlignment="gravity"
                 android:textColor="#ffffff" />
 
