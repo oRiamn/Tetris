@@ -1,4 +1,4 @@
-package com.example.oriamn.tetris;
+package com.example.oriamn.tetris.utils;
 
 import android.content.Context;
 import android.content.res.Resources;

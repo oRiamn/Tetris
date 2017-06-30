@@ -9,29 +9,26 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.example.oriamn.tetris.utils.BlockView;
+
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
     private GameCore gameCore;
 
-    private MyAdapter gridAdapter;
+    private ViewAdapter gridAdapter;
 
     public void onPause() {
         super.onPause();
@@ -47,7 +44,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public static void restartActivity(Activity act){
-
         Intent intent=new Intent();
         intent.setClass(act, act.getClass());
         act.startActivity(intent);
@@ -72,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
         GridView gridview = (GridView) findViewById(R.id.gridview);
 
 
-        gridAdapter = new MyAdapter(this);
+        gridAdapter = new ViewAdapter(this);
 
         int numColumns = 10;
 
@@ -116,19 +112,19 @@ public class GameActivity extends AppCompatActivity {
 
     public void right(View view) {
         // Kabloe
-        this.gameCore.right();
+        this.gameCore.getControlBox().right();
     }
 
     public void left(View view) {
-        this.gameCore.left();
+        this.gameCore.getControlBox().left();
     }
 
     public void rotateG(View view) {
-        this.gameCore.rotate(true);
+        this.gameCore.getControlBox().rotate(true);
     }
 
     public void rotateD(View view) {
-        this.gameCore.rotate(false);
+        this.gameCore.getControlBox().rotate(false);
     }
 
     public void onConfigurationChanged(Configuration newConfig) {
@@ -136,13 +132,13 @@ public class GameActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
     }
 
-    public class MyAdapter extends BaseAdapter {
+    public class ViewAdapter extends BaseAdapter {
 
         public ArrayList<Integer> blocks;
 
         private Context mContext;
 
-        public MyAdapter(Context c) {
+        public ViewAdapter(Context c) {
             mContext = c;
             this.blocks = new ArrayList();
         }
