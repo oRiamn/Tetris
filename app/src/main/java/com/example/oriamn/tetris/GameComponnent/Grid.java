@@ -9,6 +9,10 @@ import com.example.oriamn.tetris.piece.Piece;
 import java.util.ArrayList;
 
 /**
+ * La grille de jeu est composé de deux grilles :
+ *  * la grille logique : qui va servir à évaluer les cases pleines
+ *  * la grille visuelle : qui va afficher les cases (avec les couleurs et tout et tout)
+ *
  * Created by oriamn on 30/06/17.
  */
 
@@ -16,52 +20,85 @@ public class Grid extends GameComponnent {
 
     private Piece piece;
 
-    private ArrayList<Integer> blocks;
+    private ArrayList<Integer> logicGrid;
 
-    private GameActivity.ViewAdapter gridAdapter;
+    private GameActivity.ViewAdapter visualGrid;
 
-    public Grid(GameCore core, Piece piece, ArrayList<Integer> blocks, GameActivity.ViewAdapter gridAdapter) {
+    public Grid(GameCore core, Piece piece, ArrayList<Integer> logicGrid, GameActivity.ViewAdapter visualGrid) {
         super(core);
         this.piece = piece;
-        this.blocks = blocks;
-        this.gridAdapter = gridAdapter;
+        this.logicGrid = logicGrid;
+        this.visualGrid = visualGrid;
     }
 
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
 
+    /**
+     * Copie une ligne vers une autre
+     * @param fromY Le numéro de la ligne à copier
+     * @param toY Le numéro de la ligne à écraser
+     * @see moveBlock
+     */
     public void moveLigne(int fromY, int toY) {
         for (int i = 0; i < 10; i++){
-            this.blocks.set(toY+i, this.blocks.get(fromY+i));
-            this.gridAdapter.blocks.set(toY+i, this.gridAdapter.blocks.get(fromY+i));
+            this.logicGrid.set(toY+i, this.logicGrid.get(fromY+i));
+            this.visualGrid.blocks.set(toY+i, this.visualGrid.blocks.get(fromY+i));
         }
     }
 
+    /**
+     * Copie un block vers un autre
+     * @param fromY Le numéro du block à copier
+     * @param toY Le numéro du block à écraser
+     */
     public void moveBlock(int fromY, int toY) {
-        this.blocks.set(toY, this.blocks.get(fromY));
-        this.gridAdapter.blocks.set(toY, this.gridAdapter.blocks.get(fromY));
+        this.logicGrid.set(toY, this.logicGrid.get(fromY));
+        this.visualGrid.blocks.set(toY, this.visualGrid.blocks.get(fromY));
     }
 
+    /**
+     * Remplit une case
+     * @param x Ordonnée de la case
+     * @param y Abscisse de la case
+     */
     public void fill(int x, int y) {
        this.fill(x+y*10);
     }
 
+    /**
+     * Remplit une case
+     * @param i Numéro de la case
+     */
     public void fill(int i){
-        gridAdapter.blocks.set(i, this.piece.getColor());
-        blocks.set(i, 1);
+        visualGrid.blocks.set(i, this.piece.getColor());
+        logicGrid.set(i, 1);
     }
 
+    /**
+     * Vide une case
+     * @param x Ordonnée de la case
+     * @param y Abscisse de la case
+     */
     public void empty(int x, int y) {
         this.empty(x+y*10);
     }
 
+
+    /**
+     * Vide une case
+     * @param i Numéro de la case
+     */
     public void empty(int i){
-        gridAdapter.blocks.set(i, Color.BLACK);
-        blocks.set(i, 0);
+        visualGrid.blocks.set(i, Color.BLACK);
+        logicGrid.set(i, 0);
     }
 
+    /**
+     * Actualise la partie visuelle
+     */
     public void refresh(){
-        gridAdapter.notifyDataSetChanged();
+        visualGrid.notifyDataSetChanged();
     }
 }
