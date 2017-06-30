@@ -32,6 +32,10 @@ public abstract class Piece {
         this.computeCoordonnees();
     }
 
+    /**
+     * Calcul les coordonnées sur lequelles tient la piece
+     * La valeur est calculée à chaque changement de x,y et rotation
+     */
     private void computeCoordonnees() {
         this.coordonnees = new ArrayList<Integer>();
         int x, y;
@@ -52,8 +56,10 @@ public abstract class Piece {
         }
     }
 
-
-
+    /**
+     * Effectue une rotation de la piece
+     * @param left Sens de rotation (horaire si vrai)
+     */
     public void roate(boolean left) {
         if(left) {
             Matrix.transpose(this.forme);
@@ -97,7 +103,6 @@ public abstract class Piece {
 
         this.computeCoordonnees();
     }
-
 
     public int getWidth() {
         return width;
