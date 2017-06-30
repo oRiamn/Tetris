@@ -15,6 +15,9 @@ public abstract class Piece {
 
     private int[][] forme;
 
+    /**
+     * Largeur et hauteur relative au c
+     */
     private int width,height;
 
     private ArrayList<Integer> coordonnees;

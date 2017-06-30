@@ -113,19 +113,19 @@ public class GameActivity extends AppCompatActivity {
 
     public void right(View view) {
         // Kabloe
-        this.gameCore.getControlBox().right();
+        this.gameCore.getControls().right();
     }
 
     public void left(View view) {
-        this.gameCore.getControlBox().left();
+        this.gameCore.getControls().left();
     }
 
     public void rotateG(View view) {
-        this.gameCore.getControlBox().rotate(true);
+        this.gameCore.getControls().rotate(true);
     }
 
     public void rotateD(View view) {
-        this.gameCore.getControlBox().rotate(false);
+        this.gameCore.getControls().rotate(false);
     }
 
     public void onConfigurationChanged(Configuration newConfig) {

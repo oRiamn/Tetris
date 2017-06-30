@@ -14,10 +14,16 @@ import com.example.oriamn.tetris.lib.piece.ZPiece;
 import java.util.Random;
 
 /**
+ * Utilitaire aléatoire
+ *
  * Created by oriamn on 29/06/17.
  */
 
 public class Rand {
+
+    /**
+     * Liste de coleurs pour alimenter la fonction aléatoire
+     */
     private static String[] mColors = {
             "#39add1", // light blue
             "#3079ab", // dark blue
@@ -34,6 +40,10 @@ public class Rand {
             "#b7c0c7"  // light gray
     };
 
+    /**
+     * Retourne une couleur aléatoire dans la liste de couleur
+     * @return Code de la couleur
+     */
     public static int getColor() {
 
         Random randomGenerator = new Random();
@@ -45,8 +55,10 @@ public class Rand {
         return colorCode;
     }
 
-
-
+    /**
+     * Retourne une instance de piece de manière aléatoire
+     * @return La piece générée
+     */
     public static Piece getPiece() {
         Piece piece = null;
 

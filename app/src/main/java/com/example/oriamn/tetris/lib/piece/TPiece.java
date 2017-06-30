@@ -7,6 +7,7 @@ import com.example.oriamn.tetris.lib.Piece;
  */
 
 public class TPiece extends Piece {
+
     private static int[][] FORME = {
             {0, 0, 0, 0},
             {0, 1, 1, 1},

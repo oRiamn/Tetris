@@ -19,4 +19,10 @@ public class CubePiece extends Piece {
         super(CubePiece.FORME);
     }
 
+    /**
+     * On désactive la rotation parce que cette piece n'en a pas besoin
+     * @param left
+     */
+    @Override
+    public void roate(boolean left) { }
 }

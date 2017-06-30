@@ -3,7 +3,6 @@ package com.example.oriamn.tetris.lib;
 import android.app.AlertDialog;
 
 import com.example.oriamn.tetris.GameActivity;
-import com.example.oriamn.tetris.lib.Piece;
 import com.example.oriamn.tetris.lib.componnent.Grid;
 import com.example.oriamn.tetris.lib.componnent.ControlBox;
 import com.example.oriamn.tetris.utils.Rand;
@@ -19,7 +18,7 @@ public class GameCore {
 
     private Timer timer;
 
-    private ControlBox controlBox;
+    private ControlBox controls;
 
     private Piece piece;
 
@@ -34,10 +33,10 @@ public class GameCore {
         this.piece = Rand.getPiece();
         this.piece.setPosition(2,0);
 
-        this.controlBox.setPiece(this.piece);
+        this.controls.setPiece(this.piece);
         this.grid.setPiece(this.piece);
 
-        if(this.controlBox.isPlacable()) {
+        if(this.controls.isPlacable()) {
             removeLignesPleines();
             place();
         } else {
@@ -113,19 +112,19 @@ public class GameCore {
         this.piece.setPosition(2,0);
         
 
-        this.controlBox = new ControlBox(this,this.piece, this.blocks);
+        this.controls = new ControlBox(this,this.piece, this.blocks);
         this.grid = new Grid(this, this.piece, this.blocks, gridAdapter);
 
         this.timer = new Timer(this, 500, new Runnable() {
             @Override
             public void run() {
-                controlBox.down();
+                controls.down();
             }
         });
     }
 
-    public ControlBox getControlBox() {
-        return controlBox;
+    public ControlBox getControls() {
+        return controls;
     }
 
     public void onPause() {
