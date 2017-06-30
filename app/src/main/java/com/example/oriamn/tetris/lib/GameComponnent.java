@@ -1,6 +1,4 @@
-package com.example.oriamn.tetris.GameComponnent;
-
-import com.example.oriamn.tetris.GameCore;
+package com.example.oriamn.tetris.lib;
 
 /**
  * Un composant de jeu est relier à la console de jeux vidéos

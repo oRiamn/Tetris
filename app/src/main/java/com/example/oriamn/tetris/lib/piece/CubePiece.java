@@ -1,4 +1,6 @@
-package com.example.oriamn.tetris.piece;
+package com.example.oriamn.tetris.lib.piece;
+
+import com.example.oriamn.tetris.lib.Piece;
 
 /**
  * Created by oriamn on 09/06/17.

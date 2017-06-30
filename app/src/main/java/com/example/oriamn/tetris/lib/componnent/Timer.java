@@ -1,12 +1,15 @@
-package com.example.oriamn.tetris.utils;
+package com.example.oriamn.tetris.lib.componnent;
 
 import android.os.Handler;
+
+import com.example.oriamn.tetris.lib.GameCore;
+import com.example.oriamn.tetris.lib.GameComponnent;
 
 /**
  * Created by oriamn on 29/06/17.
  */
 
-public class Timer implements Runnable {
+public class Timer extends GameComponnent implements Runnable {
 
     private boolean shouldIDoIt = true;
 
@@ -16,7 +19,8 @@ public class Timer implements Runnable {
 
     private Runnable callback;
 
-    public Timer(int duration, Runnable callback) {
+    public Timer(GameCore core, int duration, Runnable callback) {
+        super(core);
         this.duration = duration;
 
         this.callback = callback;

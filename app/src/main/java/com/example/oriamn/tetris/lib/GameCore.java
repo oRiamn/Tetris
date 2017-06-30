@@ -1,13 +1,13 @@
-package com.example.oriamn.tetris;
+package com.example.oriamn.tetris.lib;
 
 import android.app.AlertDialog;
-import android.graphics.Color;
 
-import com.example.oriamn.tetris.GameComponnent.Grid;
-import com.example.oriamn.tetris.piece.*;
-import com.example.oriamn.tetris.GameComponnent.ControlBox;
+import com.example.oriamn.tetris.GameActivity;
+import com.example.oriamn.tetris.lib.Piece;
+import com.example.oriamn.tetris.lib.componnent.Grid;
+import com.example.oriamn.tetris.lib.componnent.ControlBox;
 import com.example.oriamn.tetris.utils.Rand;
-import com.example.oriamn.tetris.utils.Timer;
+import com.example.oriamn.tetris.lib.componnent.Timer;
 
 import java.util.ArrayList;
 
@@ -116,7 +116,7 @@ public class GameCore {
         this.controlBox = new ControlBox(this,this.piece, this.blocks);
         this.grid = new Grid(this, this.piece, this.blocks, gridAdapter);
 
-        this.timer = new Timer(500, new Runnable() {
+        this.timer = new Timer(this, 500, new Runnable() {
             @Override
             public void run() {
                 controlBox.down();

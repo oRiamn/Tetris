@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import com.example.oriamn.tetris.lib.GameCore;
 import com.example.oriamn.tetris.utils.BlockView;
 
 import java.util.ArrayList;

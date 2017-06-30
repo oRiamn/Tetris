@@ -2,14 +2,14 @@ package com.example.oriamn.tetris.utils;
 
 import android.graphics.Color;
 
-import com.example.oriamn.tetris.piece.CubePiece;
-import com.example.oriamn.tetris.piece.IPiece;
-import com.example.oriamn.tetris.piece.JPiece;
-import com.example.oriamn.tetris.piece.LPiece;
-import com.example.oriamn.tetris.piece.Piece;
-import com.example.oriamn.tetris.piece.SPiece;
-import com.example.oriamn.tetris.piece.TPiece;
-import com.example.oriamn.tetris.piece.ZPiece;
+import com.example.oriamn.tetris.lib.piece.CubePiece;
+import com.example.oriamn.tetris.lib.piece.IPiece;
+import com.example.oriamn.tetris.lib.piece.JPiece;
+import com.example.oriamn.tetris.lib.piece.LPiece;
+import com.example.oriamn.tetris.lib.Piece;
+import com.example.oriamn.tetris.lib.piece.SPiece;
+import com.example.oriamn.tetris.lib.piece.TPiece;
+import com.example.oriamn.tetris.lib.piece.ZPiece;
 
 import java.util.Random;
 

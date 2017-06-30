@@ -1,10 +1,11 @@
-package com.example.oriamn.tetris.GameComponnent;
+package com.example.oriamn.tetris.lib.componnent;
 
 import android.graphics.Color;
 
 import com.example.oriamn.tetris.GameActivity;
-import com.example.oriamn.tetris.GameCore;
-import com.example.oriamn.tetris.piece.Piece;
+import com.example.oriamn.tetris.lib.GameCore;
+import com.example.oriamn.tetris.lib.GameComponnent;
+import com.example.oriamn.tetris.lib.Piece;
 
 import java.util.ArrayList;
 

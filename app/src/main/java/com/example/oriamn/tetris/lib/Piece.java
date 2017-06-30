@@ -1,4 +1,4 @@
-package com.example.oriamn.tetris.piece;
+package com.example.oriamn.tetris.lib;
 
 import com.example.oriamn.tetris.utils.Rand;
 import com.example.oriamn.tetris.utils.Matrix;
